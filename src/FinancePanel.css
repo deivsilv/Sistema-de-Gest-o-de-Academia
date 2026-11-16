@@ -1,0 +1,206 @@
+.receipt-intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 25px;
+  background: #241830;
+  border: 1px solid #4b3261;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.receipt-intro h2 {
+  font-size: 21px;
+  letter-spacing: -0.6px;
+  margin: 10px 0;
+}
+.receipt-intro p {
+  font-size: 12px;
+  color: #c3b1d3;
+  line-height: 1.8;
+  max-width: 600px;
+}
+.receipt-intro .primary {
+  font-size: 12px;
+}
+.receipt-list {
+  padding: 0 24px;
+}
+.receipt-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 24px 0;
+  border-top: 1px solid #332a40;
+}
+.receipt-row h3 {
+  font-size: 14px;
+  margin: 10px 0;
+}
+.receipt-row p {
+  font-size: 12px;
+  color: #bdadcd;
+  line-height: 1.8;
+}
+.receipt-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  max-width: 390px;
+}
+.receipt-actions button,
+.receipt-actions a {
+  font-size: 11px;
+}
+.receipt-actions a {
+  color: #d2b1ff;
+  text-decoration: underline;
+}
+.reject-button {
+  border: 1px solid #75566c;
+  padding: 10px 12px;
+  border-radius: 7px;
+  color: #f0bdce;
+}
+.rejection-reason {
+  margin-top: 8px;
+  max-width: 550px;
+  overflow-wrap: anywhere;
+}
+.finance-footnote {
+  font-size: 11px;
+  color: #b6a9c6;
+  line-height: 1.8;
+  margin: 20px 0;
+}
+.finance-panel .panel-heading select {
+  font-size: 12px;
+  max-width: 140px;
+}
+.finance-panel .table-tools input {
+  font-size: 12px;
+  max-width: 350px;
+  width: 100%;
+}
+.confirmation-check {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start;
+  line-height: 1.7;
+  font-weight: 400 !important;
+}
+.confirmation-check input {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  accent-color: #a78bfa;
+  margin-top: 2px;
+}
+.finance-dialog textarea {
+  width: 100%;
+}
+.finance-panel > .notice {
+  line-height: 1.8;
+}
+.account-access button[disabled] {
+  opacity: 0.5;
+}
+@media (max-width: 760px) {
+  .receipt-intro,
+  .receipt-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .receipt-intro {
+    padding: 20px;
+  }
+  .receipt-actions {
+    justify-content: flex-start;
+    max-width: none;
+  }
+  .receipt-list {
+    padding: 0 18px;
+  }
+  .finance-panel .panel-heading {
+    gap: 10px;
+  }
+  .finance-panel .panel-heading h2 {
+    font-size: 13px;
+  }
+  .receipt-intro h2 {
+    font-size: 19px;
+  }
+  .finance-dialog .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .finance-dialog .form-row label {
+    width: 100%;
+  }
+}
+.access-divider {
+  border: 0;
+  border-top: 1px solid #332a40;
+  margin: 27px 0;
+}
+.account-access .notice {
+  margin-top: 20px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.finance-refresh {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 15px;
+}
+.first-payment-summary {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-wrap: wrap;
+  padding: 18px 21px;
+  border: 1px solid #443053;
+  background: #1c1425;
+  border-radius: 10px;
+  margin-bottom: 22px;
+}
+.first-payment-summary strong {
+  font-size: 13px;
+}
+.first-payment-summary p {
+  font-size: 11px;
+  color: #b6a9c6;
+  line-height: 1.7;
+}
+
+.finance-report-filters {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 0 24px 20px;
+}
+.finance-report-filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 160px;
+  min-width: 0;
+  color: #cfc0df;
+  font-size: 12px;
+}
+.finance-report-filters select, .finance-report-filters input {
+  width: 100%;
+  min-width: 0;
+  color-scheme: dark;
+}
+.finance-report-filters button { min-height: 42px; }
+.report-message { margin: 0; padding: 12px 24px 20px; font-size: 12px; color: #cfc0df; }
+.report-message.error { color: #ffb4b4; }
+@media (max-width: 600px) {
+  .finance-report-filters { padding: 0 18px 18px; }
+  .finance-report-filters label { flex-basis: 100%; }
+  .report-message { padding-inline: 18px; }
+}

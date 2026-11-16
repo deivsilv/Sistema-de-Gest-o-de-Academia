@@ -1,0 +1,3 @@
+# Gateway and handler both validate authenticated user access.
+[functions.admin-users]
+verify_jwt = true

@@ -1,0 +1,21 @@
+{
+  "appId": "br.com.steakup.app",
+  "appName": "SteakUp",
+  "webDir": "dist",
+  "server": {
+    "hostname": "localhost",
+    "androidScheme": "https",
+    "cleartext": false
+  },
+  "android": {
+    "backgroundColor": "#0d0b12",
+    "allowMixedContent": false,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SystemBars": {
+      "insetsHandling": "native",
+      "style": "DARK"
+    }
+  }
+}

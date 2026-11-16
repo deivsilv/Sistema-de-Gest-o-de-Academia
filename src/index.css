@@ -1,0 +1,150 @@
+/* Let content shrink inside flex and grid layouts. Wide tables scroll locally. */
+.app > main, .content, .panel, .panel-heading > *, .stat,
+.workout-card, .finance-grid > *, .search, .search input {
+  min-inline-size: 0;
+}
+.app > main, .table-scroll, img, canvas { max-inline-size: 100%; }
+.content, .login-box, .modal { overflow-wrap: anywhere; }
+.table-scroll {
+  inline-size: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+.app .sidebar { overflow-y: auto; }
+.table-scroll:focus-visible {
+  outline: 2px solid #a78bfa;
+  outline-offset: -2px;
+}
+
+@media (max-width: 760px), (max-height: 480px) {
+  .login {
+    display: flex;
+    flex-direction: column;
+    block-size: 100dvh;
+    min-block-size: 0;
+    overflow: auto;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right)
+      env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  .login-story {
+    flex: none;
+    padding: clamp(12px, 3vh, 24px) clamp(16px, 5vw, 28px);
+  }
+  .login-story > div, .login-story > small,
+  .login-form .demo-note { display: none; }
+  .login-form {
+    flex: 1 0 auto;
+    padding: clamp(12px, 4vh, 28px) clamp(16px, 5vw, 28px);
+  }
+  .login-box h2 { font-size: clamp(23px, 6vw, 31px); margin: 8px 0; }
+  .login-box > p { margin-bottom: 16px; }
+  body:has(.login):has(.pwa-install) .login-form { padding-bottom: 66px; }
+}
+
+@media (max-width: 480px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .panel-heading, .table-tools, .section-title, .modal-buttons { flex-wrap: wrap; }
+  .sidebar { max-width: calc(100% - 24px); }
+  .primary { white-space: normal; }
+  .workout-filters select { min-width: 0; max-width: 100%; }
+}
+
+@media (max-height: 480px) {
+  .login-form { padding-block: 10px; }
+  .login-box form label { margin-bottom: 10px; gap: 5px; }
+  .login-box input { padding-block: 8px; }
+  .login-box > p { margin-bottom: 10px; }
+}
+@media (orientation: landscape) and (max-height: 480px) and (min-width: 560px) {
+  .login { flex-direction: row; }
+  .login-story { justify-content: center; }
+  .login-form { flex: 1 1 0; min-inline-size: 0; }
+  body:has(.login):has(.pwa-install) .login-form { padding-bottom: 54px; }
+}
+
+@media (max-width: 760px) and (orientation: portrait) {
+  .login-story { background: transparent; }
+  .login-story .brand { margin-inline: auto; width: 100%; max-width: 350px; }
+  .login-form { justify-content: flex-start; }
+}
+
+/* The existing brand and form share a single card on portrait screens. */
+@media (max-width: 760px) and (orientation: portrait) {
+  .login {
+    align-items: center;
+    padding: max(24px, env(safe-area-inset-top)) 16px
+      max(24px, env(safe-area-inset-bottom));
+    background:
+      linear-gradient(153deg, #462078 0 12%, transparent 12.2%),
+      linear-gradient(24deg, #252553 0 14%, transparent 14.2%),
+      linear-gradient(164deg, #211334 0 26%, #0d0b12 26.2% 80%, #191530 80.2%);
+  }
+  .login-story, .login-form {
+    width: min(100%, 400px);
+    background: #191322;
+    border: 1px solid #443354;
+    padding-inline: clamp(18px, 6vw, 30px);
+  }
+  .login-story {
+    margin-block-start: auto;
+    border-bottom: 0;
+    border-radius: 20px 20px 0 0;
+    padding-block: 24px 8px;
+  }
+  .login-story .brand {
+    width: fit-content;
+    max-width: 100%;
+  }
+  .login-form {
+    flex: none;
+    margin-block-end: auto;
+    border-top: 0;
+    border-radius: 0 0 20px 20px;
+    padding-block: 14px 24px;
+  }
+  body:has(.login):has(.pwa-install) .login-form { padding-bottom: 24px; }
+  body:has(.login):has(.pwa-install) .login { padding-bottom: max(76px, env(safe-area-inset-bottom)); }
+  .login-box > .eyebrow { display: none; }
+  .login-box > h2, .login-box > p { text-align: center; }
+  .login-box .primary { background: linear-gradient(105deg, #6d28d9, #5141bf); }
+}
+
+/* Mobile pages use the available width even beside long names and actions. */
+@media (max-width: 760px) {
+  .app > main { flex: 1 1 0; width: auto; }
+  .app .content {
+    padding-inline-start: max(14px, env(safe-area-inset-left));
+    padding-inline-end: max(14px, env(safe-area-inset-right));
+  }
+  .app .topbar {
+    min-width: 0;
+    padding-inline-start: max(14px, env(safe-area-inset-left));
+    padding-inline-end: max(14px, env(safe-area-inset-right));
+  }
+  .app .topbar > div { min-width: 0; overflow-wrap: anywhere; }
+  .app :is(.panel-heading, .table-tools, .section-title, .actions, .modal-buttons) {
+    flex-wrap: wrap;
+  }
+  .app :is(button, input, select, textarea, .badge, .plan-tag) { max-inline-size: 100%; }
+  .app :is(.badge, .plan-tag, .primary) { white-space: normal; }
+  .app .person > div { min-width: 0; }
+  .app .actions button { min-block-size: 38px; }
+  .app .table-scroll .actions { flex-wrap: nowrap; inline-size: max-content; }
+  .app .table-scroll .actions button { white-space: nowrap; }
+  .app .table-scroll :is(th, td) { padding-inline: clamp(10px, 3vw, 16px); }
+  .app .table-scroll .person {
+    inline-size: max-content;
+    min-inline-size: 144px;
+    max-inline-size: 220px;
+    white-space: normal;
+  }
+  .app .table-scroll tbody td { overflow-wrap: break-word; }
+  .modal {
+    max-inline-size: calc(100% - 24px);
+    max-block-size: calc(100dvh - 32px);
+    padding: 18px;
+  }
+  .modal .form-row { flex-direction: column; gap: 0; }
+  .modal .form-row > label { width: 100%; }
+  .modal :is(input, textarea, select) { max-inline-size: 100%; }
+}

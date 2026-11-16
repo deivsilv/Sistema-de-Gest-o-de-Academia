@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {financialStatus} from '../src/financialStatus.ts';
+import type {Payment} from '../src/academy.ts';
+const today='2026-11-13';
+const payment=(date:string,studentId=1):Payment=>({id:'payment',studentId,amount:100,date,status:'PAGO'});
+test('novo aluno aguarda primeiro pagamento',()=>assert.equal(financialStatus([],1,false,today),'AWAITING_FIRST_PAYMENT'));
+test('comprovante pendente fica em análise',()=>assert.equal(financialStatus([],1,true,today),'UNDER_REVIEW'));
+test('comprovante rejeitado sem pagamento continua aguardando primeiro pagamento',()=>assert.equal(financialStatus([],1,false,today),'AWAITING_FIRST_PAYMENT'));
+test('pagamento atual confirmado fica em dia',()=>assert.equal(financialStatus([payment('2026-11-13')],1,false,today),'PAID'));
+test('pagamento atual continua válido com outro comprovante em análise',()=>assert.equal(financialStatus([payment('2026-11-10')],1,true,today),'PAID'));
+test('pagamento antigo confirmado é inadimplente',()=>assert.equal(financialStatus([payment('2026-10-13')],1,false,today),'OVERDUE'));
+test('pagamento antigo com novo comprovante aguarda análise',()=>assert.equal(financialStatus([payment('2026-10-13')],1,true,today),'UNDER_REVIEW'));
+test('limite de 30 dias é inclusivo',()=>assert.equal(financialStatus([payment('2026-10-14')],1,false,today),'PAID'));
+test('pagamento de outro aluno não conta',()=>assert.equal(financialStatus([payment('2026-11-13',2)],1,false,today),'AWAITING_FIRST_PAYMENT'));
+test('data futura não conta como primeiro pagamento confirmado',()=>assert.equal(financialStatus([payment('2026-11-14')],1,false,today),'AWAITING_FIRST_PAYMENT'));
+test('registro presencial confirmado também libera',()=>assert.equal(financialStatus([{...payment('2026-11-12'),method:'DINHEIRO'}],1,false,today),'PAID'));
+test('transição novo -> análise -> aprovado -> vencido',()=>{assert.equal(financialStatus([],1,false,today),'AWAITING_FIRST_PAYMENT');assert.equal(financialStatus([],1,true,today),'UNDER_REVIEW');assert.equal(financialStatus([payment('2026-11-13')],1,false,today),'PAID');assert.equal(financialStatus([payment('2026-11-13')],1,false,'2026-12-14'),'OVERDUE');});

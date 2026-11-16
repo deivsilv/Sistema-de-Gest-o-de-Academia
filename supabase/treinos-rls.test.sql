@@ -1,0 +1,73 @@
+begin;
+do $$
+declare a uuid; s uuid; p uuid; w uuid; r uuid; v_count bigint; blocked boolean; plan_id uuid;
+begin
+ select id into a from public.perfis where perfil='ADMIN' and ativo limit 1;
+ select id into p from public.perfis where perfil='PERSONAL' and ativo limit 1;
+ select id into s from public.perfis where perfil='ALUNO' and ativo limit 1;
+ if a is null or p is null or s is null then raise exception 'Faltam perfis ativos para os testes.'; end if;
+ -- Todos os ajustes e registros deste teste sao desfeitos pelo ROLLBACK.
+ update public.matriculas set ativa=false,data_fim=greatest(data_inicio,current_date) where aluno_id=s and ativa;
+ insert into public.planos(nome,valor,duracao_meses,ativo) values('TESTE PLANO RLS TEMPORARIO',1,1,true) returning id into plan_id;
+ -- Apenas dentro desta transacao: deixa os pagamentos antigos para testar o bloqueio.
+ update public.pagamentos set data_pagamento=current_date-31 where aluno_id=s;
+ perform set_config('request.jwt.claims',json_build_object('sub',p,'role','authenticated')::text,true);
+ execute 'set local role authenticated';
+ -- Fluxo exato do formulario: INSERT com RETURNING e consulta ao aluno.
+ insert into public.treinos(aluno_id,titulo,descricao) values(s,'TESTE RLS TEMPORARIO','Somente teste com ROLLBACK.') returning id into w;
+ if w is null then raise exception 'Personal nao conseguiu criar treino.'; end if;
+ select count(*) into v_count from public.perfis where id=s;
+ if v_count<>1 then raise exception 'Personal nao conseguiu consultar aluno.'; end if;
+ update public.treinos set titulo='TESTE RLS EDITADO' where id=w returning id into r;
+ if r is null then raise exception 'Personal nao conseguiu editar seu treino.'; end if;
+ blocked:=false;
+ begin insert into public.treinos(aluno_id,personal_id,titulo,descricao) values(s,a,'TESTE AUTORIA','Nao deve ser inserido.');
+ exception when insufficient_privilege then blocked:=true; end;
+ if not blocked then raise exception 'Foi permitida autoria de outro perfil.'; end if;
+ perform set_config('request.jwt.claims',json_build_object('sub',s,'role','authenticated')::text,true);
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Aluno sem pagamento conseguiu visualizar treino.'; end if;
+ -- Consulta perfis tambem nao pode entrar em ciclo.
+ perform id from public.perfis;
+ blocked:=false;
+ begin insert into public.treinos(aluno_id,titulo,descricao) values(s,'TESTE ALUNO','Nao permitido.');
+ exception when insufficient_privilege then blocked:=true; end;
+ if not blocked then raise exception 'Aluno conseguiu criar treino.'; end if;
+ execute 'reset role';
+ insert into public.pagamentos(aluno_id,valor,data_pagamento,status,registrado_por) values(s,1,current_date,'PAGO',a);
+ execute 'set local role authenticated';
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Pagamento liberou treino sem plano ativo.'; end if;
+ execute 'reset role';
+ insert into public.matriculas(aluno_id,plano_id,data_inicio,ativa) values(s,plan_id,current_date,true);
+ update public.planos set ativo=false where id=plan_id;
+ execute 'set local role authenticated';
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Plano desativado liberou treino.'; end if;
+ execute 'reset role';
+ update public.planos set ativo=true where id=plan_id;
+ update public.pagamentos set data_pagamento=current_date-31 where aluno_id=s;
+ execute 'set local role authenticated';
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Plano ativo liberou treino sem pagamento recente.'; end if;
+ execute 'reset role';
+ insert into public.pagamentos(aluno_id,valor,data_pagamento,status,registrado_por) values(s,1,current_date,'PAGO',a);
+ execute 'set local role authenticated';
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>1 then raise exception 'Plano ativo e pagamento nao liberaram treino.'; end if;
+ select count(*) into v_count from public.perfis where id=p;
+ if v_count<>1 then raise exception 'Aluno nao conseguiu ver o personal de seu treino.'; end if;
+ update public.treinos set titulo='TESTE ALTERACAO PROIBIDA' where id=w returning id into r;
+ if r is not null then raise exception 'Aluno conseguiu editar treino.'; end if;
+ perform set_config('request.jwt.claims',json_build_object('sub',a,'role','authenticated')::text,true);
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Administrador conseguiu visualizar treino.'; end if;
+ perform set_config('request.jwt.claims',json_build_object('sub',p,'role','authenticated')::text,true);
+ update public.treinos set ativo=false where id=w;
+ perform set_config('request.jwt.claims',json_build_object('sub',s,'role','authenticated')::text,true);
+ select count(*) into v_count from public.treinos where id=w;
+ if v_count<>0 then raise exception 'Aluno conseguiu ver treino desativado.'; end if;
+ execute 'reset role';
+end; $$;
+rollback;
+select 'OK: criar com RETURNING, consultar aluno, editar, proteger autoria, bloquear sem pagamento, exigir plano ativo e pagamento recente, consultar personal, impedir aluno de editar, impedir admin de ler, ocultar treino inativo. Nenhum dado de teste persistido.' as resultado;
