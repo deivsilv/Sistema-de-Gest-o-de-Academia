@@ -1,206 +1,146 @@
-.receipt-intro {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-  padding: 25px;
-  background: #241830;
-  border: 1px solid #4b3261;
-  border-radius: 12px;
-  margin-bottom: 24px;
-}
-.receipt-intro h2 {
-  font-size: 21px;
-  letter-spacing: -0.6px;
-  margin: 10px 0;
-}
-.receipt-intro p {
-  font-size: 12px;
-  color: #c3b1d3;
-  line-height: 1.8;
-  max-width: 600px;
-}
-.receipt-intro .primary {
-  font-size: 12px;
-}
-.receipt-list {
-  padding: 0 24px;
-}
-.receipt-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 24px 0;
-  border-top: 1px solid #332a40;
-}
-.receipt-row h3 {
-  font-size: 14px;
-  margin: 10px 0;
-}
-.receipt-row p {
-  font-size: 12px;
-  color: #bdadcd;
-  line-height: 1.8;
-}
-.receipt-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  max-width: 390px;
-}
-.receipt-actions button,
-.receipt-actions a {
-  font-size: 11px;
-}
-.receipt-actions a {
-  color: #d2b1ff;
-  text-decoration: underline;
-}
-.reject-button {
-  border: 1px solid #75566c;
-  padding: 10px 12px;
-  border-radius: 7px;
-  color: #f0bdce;
-}
-.rejection-reason {
-  margin-top: 8px;
-  max-width: 550px;
-  overflow-wrap: anywhere;
-}
-.finance-footnote {
-  font-size: 11px;
-  color: #b6a9c6;
-  line-height: 1.8;
-  margin: 20px 0;
-}
-.finance-panel .panel-heading select {
-  font-size: 12px;
-  max-width: 140px;
-}
-.finance-panel .table-tools input {
-  font-size: 12px;
-  max-width: 350px;
-  width: 100%;
-}
-.confirmation-check {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: flex-start;
-  line-height: 1.7;
-  font-weight: 400 !important;
-}
-.confirmation-check input {
-  width: 17px;
-  height: 17px;
-  flex-shrink: 0;
-  accent-color: #a78bfa;
-  margin-top: 2px;
-}
-.finance-dialog textarea {
-  width: 100%;
-}
-.finance-panel > .notice {
-  line-height: 1.8;
-}
-.account-access button[disabled] {
-  opacity: 0.5;
-}
-@media (max-width: 760px) {
-  .receipt-intro,
-  .receipt-row {
-    flex-direction: column;
-    align-items: stretch;
-  }
+@reference "./styles/theme.css";
+
+@layer components {
   .receipt-intro {
-    padding: 20px;
-  }
-  .receipt-actions {
-    justify-content: flex-start;
-    max-width: none;
-  }
-  .receipt-list {
-    padding: 0 18px;
-  }
-  .finance-panel .panel-heading {
-    gap: 10px;
-  }
-  .finance-panel .panel-heading h2 {
-    font-size: 13px;
+    @apply mb-[24px] flex items-center justify-between gap-[25px] rounded-[12px] border border-[#4b3261] [background:#241830] p-[25px];
   }
   .receipt-intro h2 {
-    font-size: 19px;
+    @apply mx-0 my-[10px] text-[21px] tracking-[-0.6px];
   }
-  .finance-dialog .form-row {
-    flex-direction: column;
-    gap: 0;
+  .receipt-intro p {
+    @apply max-w-[600px] text-[12px] leading-[1.8] text-[#c3b1d3];
   }
-  .finance-dialog .form-row label {
-    width: 100%;
+  .receipt-intro .primary {
+    @apply text-[12px];
   }
-}
-.access-divider {
-  border: 0;
-  border-top: 1px solid #332a40;
-  margin: 27px 0;
-}
-.account-access .notice {
-  margin-top: 20px;
-  font-size: 11px;
-  line-height: 1.7;
-}
-.finance-refresh {
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 0 15px;
-}
-.first-payment-summary {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  flex-wrap: wrap;
-  padding: 18px 21px;
-  border: 1px solid #443053;
-  background: #1c1425;
-  border-radius: 10px;
-  margin-bottom: 22px;
-}
-.first-payment-summary strong {
-  font-size: 13px;
-}
-.first-payment-summary p {
-  font-size: 11px;
-  color: #b6a9c6;
-  line-height: 1.7;
-}
-
-.finance-report-filters {
-  display: flex;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  gap: 14px;
-  padding: 0 24px 20px;
-}
-.finance-report-filters label {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  flex: 1 1 160px;
-  min-width: 0;
-  color: #cfc0df;
-  font-size: 12px;
-}
-.finance-report-filters select, .finance-report-filters input {
-  width: 100%;
-  min-width: 0;
-  color-scheme: dark;
-}
-.finance-report-filters button { min-height: 42px; }
-.report-message { margin: 0; padding: 12px 24px 20px; font-size: 12px; color: #cfc0df; }
-.report-message.error { color: #ffb4b4; }
-@media (max-width: 600px) {
-  .finance-report-filters { padding: 0 18px 18px; }
-  .finance-report-filters label { flex-basis: 100%; }
-  .report-message { padding-inline: 18px; }
+  .receipt-list {
+    @apply px-[24px] py-0;
+  }
+  .receipt-row {
+    @apply flex justify-between gap-[18px] border-t border-t-line px-0 py-[24px];
+  }
+  .receipt-row h3 {
+    @apply mx-0 my-[10px] text-[14px];
+  }
+  .receipt-row p {
+    @apply text-[12px] leading-[1.8] text-[#bdadcd];
+  }
+  .receipt-actions {
+    @apply flex max-w-[390px] flex-wrap items-center justify-end gap-[10px];
+  }
+  .receipt-actions button,
+  .receipt-actions a {
+    @apply text-[11px];
+  }
+  .receipt-actions a {
+    @apply text-[#d2b1ff] underline;
+  }
+  .reject-button {
+    @apply rounded-[7px] border border-[#75566c] px-[12px] py-[10px] text-[#f0bdce];
+  }
+  .rejection-reason {
+    @apply mt-[8px] max-w-[550px] [overflow-wrap:anywhere];
+  }
+  .finance-footnote {
+    @apply mx-0 my-[20px] text-[11px] leading-[1.8] text-muted;
+  }
+  .finance-panel .panel-heading select {
+    @apply max-w-[140px] text-[12px];
+  }
+  .finance-panel .table-tools input {
+    @apply w-full max-w-[350px] text-[12px];
+  }
+  .confirmation-check {
+    @apply flex! flex-row! items-start font-normal! leading-[1.7];
+  }
+  .confirmation-check input {
+    @apply mt-[2px] h-[17px] w-[17px] shrink-0 accent-accent-soft;
+  }
+  .finance-dialog textarea {
+    @apply w-full;
+  }
+  .finance-panel > .notice {
+    @apply leading-[1.8];
+  }
+  .account-access button[disabled] {
+    @apply opacity-50;
+  }
+  @media (max-width: 760px) {
+    .receipt-intro,
+    .receipt-row {
+      @apply flex-col items-stretch;
+    }
+    .receipt-intro {
+      @apply p-[20px];
+    }
+    .receipt-actions {
+      @apply max-w-none justify-start;
+    }
+    .receipt-list {
+      @apply px-[18px] py-0;
+    }
+    .finance-panel .panel-heading {
+      @apply gap-[10px];
+    }
+    .finance-panel .panel-heading h2 {
+      @apply text-[13px];
+    }
+    .receipt-intro h2 {
+      @apply text-[19px];
+    }
+    .finance-dialog .form-row {
+      @apply flex-col gap-0;
+    }
+    .finance-dialog .form-row label {
+      @apply w-full;
+    }
+  }
+  .access-divider {
+    @apply mx-0 my-[27px] border-0 border-t border-t-line;
+  }
+  .account-access .notice {
+    @apply mt-[20px] text-[11px] leading-[1.7];
+  }
+  .finance-refresh {
+    @apply m-0 mb-[15px] flex justify-end;
+  }
+  .first-payment-summary {
+    @apply mb-[22px] flex flex-wrap items-center gap-[13px] rounded-[10px] border border-[#443053] [background:#1c1425] px-[21px] py-[18px];
+  }
+  .first-payment-summary strong {
+    @apply text-[13px];
+  }
+  .first-payment-summary p {
+    @apply text-[11px] leading-[1.7] text-muted;
+  }
+  .finance-report-filters {
+    @apply flex flex-wrap items-end gap-[14px] px-[24px] pt-0 pb-[20px];
+  }
+  .finance-report-filters label {
+    @apply flex min-w-0 flex-[1_1_160px] flex-col gap-[8px] text-[12px] text-[#cfc0df];
+  }
+  .finance-report-filters select,
+  .finance-report-filters input {
+    @apply w-full min-w-0 scheme-dark;
+  }
+  .finance-report-filters button {
+    @apply min-h-[42px];
+  }
+  .report-message {
+    @apply m-0 px-[24px] pt-[12px] pb-[20px] text-[12px] text-[#cfc0df];
+  }
+  .report-message.error {
+    @apply text-[#ffb4b4];
+  }
+  @media (max-width: 600px) {
+    .finance-report-filters {
+      @apply px-[18px] pt-0 pb-[18px];
+    }
+    .finance-report-filters label {
+      @apply basis-full;
+    }
+    .report-message {
+      @apply [padding-inline:18px];
+    }
+  }
 }

@@ -1,168 +1,93 @@
-.pix-payment {
-  background: linear-gradient(135deg, #241832, #17111e);
-  border: 1px solid #513868;
-  border-radius: 13px;
-  padding: 27px;
-  margin-bottom: 24px;
-}
-.pix-heading {
-  display: flex;
-  justify-content: space-between;
-  gap: 18px;
-  color: #d3b4ff;
-}
-.pix-heading h2 {
-  font-size: 25px;
-  letter-spacing: -0.8px;
-  color: #f3edf9;
-  margin: 11px 0;
-}
-.pix-heading p,
-.pix-instructions p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: #c2b3d1;
-}
-.pix-heading > svg {
-  flex-shrink: 0;
-}
-.pix-demo {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: #382b1c;
-  border: 1px solid #795a32;
-  color: #f5d6ac;
-  border-radius: 8px;
-  padding: 13px 16px;
-  margin: 22px 0;
-  font-size: 11px;
-  line-height: 1.7;
-}
-.pix-key {
-  margin: 22px 0 16px;
-}
-.pix-key label,
-.pix-instructions label {
-  display: block;
-  font-size: 11px;
-  color: #cbb7df;
-  margin-bottom: 8px;
-}
-.pix-key input {
-  display: block;
-  width: 100%;
-  font-family: monospace;
-  font-size: 13px;
-  letter-spacing: 0.2px;
-  color: #eee4fb;
-  background: #110d17;
-  border-color: #4a345e;
-}
-.pix-buttons {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.pix-buttons button {
-  font-size: 11px;
-}
-.pix-secondary {
-  border: 1px solid #67488b;
-  border-radius: 8px;
-  color: #e5d0ff;
-  padding: 12px 15px;
-  background: #2d1d42;
-}
-.pix-secondary:hover {
-  background: #3e2857;
-}
-.pix-feedback {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  color: #c3e6cf;
-  font-size: 12px;
-  margin: 16px 0;
-}
-.pix-expanded {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 28px;
-  align-items: center;
-  padding: 25px 0;
-  margin-top: 20px;
-  border-top: 1px solid #493153;
-}
-.pix-qr {
-  margin: 0;
-  background: #fff;
-  border-radius: 12px;
-  padding: 10px;
-  color: #241832;
-  text-align: center;
-  overflow: hidden;
-}
-.pix-qr img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  image-rendering: pixelated;
-}
-.pix-qr figcaption {
-  font-size: 10px;
-  font-weight: 600;
-  padding: 8px 0 4px;
-}
-.pix-instructions h3 {
-  font-size: 16px;
-  margin-bottom: 12px;
-}
-.pix-instructions textarea {
-  width: 100%;
-  font-size: 11px;
-  font-family: monospace;
-  line-height: 1.8;
-  padding: 10px;
-  background: #110d17;
-  color: #cdb9df;
-  border: 1px solid #493153;
-  border-radius: 8px;
-  resize: vertical;
-  margin-top: 9px;
-  word-break: break-all;
-}
-.pix-instructions label {
-  margin-top: 17px;
-}
-.pix-loading {
-  min-height: 220px;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-}
-@media (max-width: 760px) {
+@reference "./styles/theme.css";
+
+@layer components {
   .pix-payment {
-    padding: 20px;
+    @apply mb-[24px] rounded-[13px] border border-[#513868] p-[27px] [background:linear-gradient(135deg,#241832,#17111e)];
   }
-  .pix-expanded {
-    grid-template-columns: 1fr;
-    gap: 20px;
+  .pix-heading {
+    @apply flex justify-between gap-[18px] text-[#d3b4ff];
   }
-  .pix-qr {
-    max-width: 280px;
-    justify-self: center;
+  .pix-heading h2 {
+    @apply mx-0 my-[11px] text-[25px] tracking-[-0.8px] text-text;
   }
-.pix-heading h2 {
-    font-size: 23px;
+  .pix-heading p,
+  .pix-instructions p {
+    @apply text-[12px] leading-[1.9] text-[#c2b3d1];
+  }
+  .pix-heading > svg {
+    @apply shrink-0;
+  }
+  .pix-demo {
+    @apply mx-0 my-[22px] flex flex-col gap-[5px] rounded-[8px] border border-[#795a32] [background:#382b1c] px-[16px] py-[13px] text-[11px] leading-[1.7] text-[#f5d6ac];
+  }
+  .pix-key {
+    @apply mx-0 mt-[22px] mb-[16px];
+  }
+  .pix-key label,
+  .pix-instructions label {
+    @apply mb-[8px] block text-[11px] text-[#cbb7df];
   }
   .pix-key input {
-    font-size: 11px;
+    @apply block w-full border-[#4a345e] [background:#110d17] text-[13px] tracking-[0.2px] text-[#eee4fb] [font-family:monospace];
   }
-  .pix-buttons > .primary,
-  .pix-buttons > .pix-secondary {
-    flex: 1;
-    white-space: nowrap;
+  .pix-buttons {
+    @apply flex flex-wrap items-center gap-[12px];
+  }
+  .pix-buttons button {
+    @apply text-[11px];
+  }
+  .pix-secondary {
+    @apply rounded-[8px] border border-[#67488b] [background:#2d1d42] px-[15px] py-[12px] text-[#e5d0ff];
+  }
+  .pix-secondary:hover {
+    @apply [background:#3e2857];
+  }
+  .pix-feedback {
+    @apply mx-0 my-[16px] flex items-center gap-[8px] text-[12px] text-[#c3e6cf];
+  }
+  .pix-expanded {
+    @apply mt-[20px] grid grid-cols-[280px_1fr] items-center gap-[28px] border-t border-t-[#493153] px-0 py-[25px];
+  }
+  .pix-qr {
+    @apply m-0 overflow-hidden rounded-[12px] [background:#fff] p-[10px] text-center text-[#241832];
+  }
+  .pix-qr img {
+    @apply block h-auto max-w-full [image-rendering:pixelated];
+  }
+  .pix-qr figcaption {
+    @apply px-0 pt-[8px] pb-[4px] text-[10px] font-semibold;
+  }
+  .pix-instructions h3 {
+    @apply mb-[12px] text-[16px];
+  }
+  .pix-instructions textarea {
+    @apply mt-[9px] w-full resize-y rounded-[8px] border border-[#493153] [background:#110d17] p-[10px] text-[11px] leading-[1.8] text-[#cdb9df] [font-family:monospace] [word-break:break-all];
+  }
+  .pix-instructions label {
+    @apply mt-[17px];
+  }
+  .pix-loading {
+    @apply grid min-h-[220px] place-items-center text-[12px];
+  }
+  @media (max-width: 760px) {
+    .pix-payment {
+      @apply p-[20px];
+    }
+    .pix-expanded {
+      @apply grid-cols-[1fr] gap-[20px];
+    }
+    .pix-qr {
+      @apply max-w-[280px] justify-self-center;
+    }
+    .pix-heading h2 {
+      @apply text-[23px];
+    }
+    .pix-key input {
+      @apply text-[11px];
+    }
+    .pix-buttons > .primary,
+    .pix-buttons > .pix-secondary {
+      @apply flex-1 whitespace-nowrap;
+    }
   }
 }

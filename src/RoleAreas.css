@@ -1,419 +1,248 @@
-.profile-choices {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 7px;
-  margin: 0 0 24px;
-}
-.profile-choices button {
-  font-size: 11px;
-  border: 1px solid #332a40;
-  border-radius: 8px;
-  padding: 11px 6px;
-  color: #b6a9c6;
-  background: #17121f;
-}
-.profile-choices button[aria-pressed="true"] {
-  color: #eadcff;
-  background: #382251;
-  border-color: #a78bfa;
-}
-.login-box .profile-label {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 11px;
-  color: #b6a9c6;
-}
-.login-error {
-  margin-bottom: 15px;
-}
-.profile-account small {
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 1.6;
-  color: #b6a9c6;
-}
-.role-app .stat strong.stat-text {
-  font-size: 25px;
-  line-height: 1.5;
-}
-.portal-hero-icon {
-  display: grid;
-  place-items: center;
-  width: 220px;
-  height: 190px;
-  color: #ab85e5;
-  border-radius: 50%;
-  background: radial-gradient(ellipse, #7540b033, transparent 70%);
-}
-.section-title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin: 30px 0 18px;
-}
-.section-title h2 {
-  font-size: 18px;
-  letter-spacing: -0.5px;
-}
-.section-title p {
-  font-size: 11px;
-  color: #b6a9c6;
-  margin-top: 7px;
-}
-.workout-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
-.workout-card {
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #332a40;
-  background: #141119;
-  min-width: 0;
-}
-.workout-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 23px;
-}
-.workout-symbol {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 45px;
-  height: 45px;
-  border: 1px solid #4c3269;
-  border-radius: 12px;
-  background: #291c3d;
-  color: #c4a3ff;
-  flex-shrink: 0;
-}
-.workout-card > .eyebrow {
-  font-size: 9px;
-  letter-spacing: 1.2px;
-  color: #c6b4de;
-}
-.workout-card h2 {
-  font-size: 20px;
-  letter-spacing: -0.6px;
-  line-height: 1.5;
-  margin: 9px 0 12px;
-  overflow-wrap: anywhere;
-}
-.workout-excerpt {
-  font-size: 12px;
-  color: #b6a9c6;
-  line-height: 1.9;
-  white-space: pre-line;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 68px;
-}
-.workout-meta {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  color: #a599b5;
-  font-size: 10px;
-  flex-wrap: wrap;
-  margin: 22px 0;
-  padding-top: 16px;
-  border-top: 1px solid #302638;
-}
-.workout-actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.workout-actions button {
-  font-size: 11px;
-  padding: 10px 0;
-}
-.workout-actions .primary {
-  padding: 11px 14px;
-  margin-right: auto;
-}
-.workout-actions button:not(.primary) {
-  color: #c5b3da;
-}
-.archived {
-  border-style: dashed;
-}
-.workout-filters {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-.workout-filters input {
-  padding: 12px 0;
-}
-.workout-filters select {
-  font-size: 12px;
-  padding: 11px;
-  max-width: 100%;
-}
-.area-empty {
-  padding: 50px 25px;
-  text-align: center;
-  border: 1px dashed #40334e;
-  border-radius: 12px;
-  background: #141119;
-  color: #aa90ca;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-.area-empty h2 {
-  color: #ede4f7;
-  font-size: 18px;
-}
-.area-empty p {
-  font-size: 12px;
-  color: #b6a9c6;
-  line-height: 1.7;
-}
-.locked-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 45px 25px;
-  border: 1px solid #5d3b80;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #21152f, #141119);
-  gap: 17px;
-}
-.lock-symbol {
-  display: grid;
-  place-items: center;
-  width: 65px;
-  height: 65px;
-  border-radius: 50%;
-  color: #c7a6ff;
-  background: #37214f;
-  margin-bottom: 4px;
-}
-.locked-state h2 {
-  font-size: 25px;
-  letter-spacing: -0.7px;
-}
-.locked-state p {
-  font-size: 13px;
-  color: #dfd0ee;
-  line-height: 1.7;
-}
-.locked-state .lock-hint {
-  font-size: 11px;
-  color: #b6a9c6;
-}
-.locked-state .primary {
-  margin-top: 6px;
-  font-size: 12px;
-}
-.finance-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-  margin-bottom: 25px;
-}
-.membership-card,
-.financial-status {
-  background: #141119;
-  border: 1px solid #332a40;
-  border-radius: 12px;
-  padding: 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 17px;
-}
-.membership-card h2,
-.financial-status h2 {
-  font-size: 26px;
-  letter-spacing: -0.8px;
-}
-.membership-card p,
-.financial-status p {
-  font-size: 12px;
-  line-height: 1.9;
-  color: #c2b3d1;
-}
-.financial-status small {
-  color: #b6a9c6;
-  line-height: 1.8;
-}
-.membership-foot {
-  margin-top: auto;
-  padding-top: 22px;
-  border-top: 1px solid #332a40;
-  width: 100%;
-  font-size: 10px;
-  color: #b6a9c6;
-  line-height: 1.8;
-  display: flex;
-  gap: 7px;
-  align-items: center;
-}
-.financial-status.pending {
-  border-color: #644180;
-  background: linear-gradient(135deg, #291a3c, #141119);
-}
-.payment-panel > .panel-heading > svg {
-  color: #b091d7;
-}
-.portal-dialog {
-  color: #f3edf9;
-  border: 1px solid #4b355f;
-  background: #141119;
-  padding: 30px;
-  width: 620px;
-  max-width: calc(100vw - 32px);
-  max-height: 88dvh;
-  margin: auto;
-}
-.portal-dialog::backdrop {
-  background: #09060fe0;
-  backdrop-filter: blur(5px);
-}
-.portal-dialog textarea {
-  resize: vertical;
-  font: inherit;
-  font-size: 13px;
-  line-height: 1.8;
-  padding: 13px;
-  border: 1px solid #433251;
-  background: #100d16;
-  color: #f3edf9;
-  border-radius: 8px;
-  min-height: 150px;
-}
-.portal-dialog textarea:focus {
-  outline: 2px solid #a78bfa;
-  outline-offset: 1px;
-}
-.portal-dialog .modal-heading {
-  align-items: flex-start;
-  gap: 15px;
-}
-.portal-dialog h2 {
-  overflow-wrap: anywhere;
-  font-size: 24px;
-  line-height: 1.4;
-}
-.workout-description {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 14px;
-  line-height: 1.9;
-  padding: 22px;
-  background: #1d1627;
-  border: 1px solid #392949;
-  border-radius: 9px;
-  margin: 22px 0;
-}
-.detail-byline {
-  font-size: 11px;
-  color: #b6a9c6;
-  line-height: 1.9;
-}
-.detail-byline svg {
-  vertical-align: middle;
-  margin-right: 6px;
-}
-.confirm-copy {
-  font-size: 13px;
-  color: #cebfdd;
-  line-height: 1.9;
-  margin: 0 0 25px;
-}
-button:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-.role-app .user strong {
-  max-width: 135px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-@media (max-width: 1000px) {
-  .workout-grid,
-  .finance-grid {
-    grid-template-columns: 1fr;
+@reference "./styles/theme.css";
+
+@layer components {
+  .profile-choices {
+    @apply grid grid-cols-[repeat(3,1fr)] gap-[7px] mt-0 mx-0 mb-[24px];
   }
-  .portal-hero-icon {
-    width: 120px;
+  .profile-choices button {
+    @apply text-[11px] border border-line rounded-[8px] py-[11px] px-[6px] text-muted [background:#17121f];
+  }
+  .profile-choices button[aria-pressed="true"] {
+    @apply text-[#eadcff] [background:#382251] border-accent-soft;
+  }
+  .login-box .profile-label {
+    @apply block mb-[12px] text-[11px] text-muted;
+  }
+  .login-error {
+    @apply mb-[15px];
+  }
+  .profile-account small {
+    @apply font-normal text-[10px] leading-[1.6] text-muted;
   }
   .role-app .stat strong.stat-text {
-    font-size: 20px;
+    @apply text-[25px] leading-[1.5];
   }
-}
-@media (max-width: 760px) {
   .portal-hero-icon {
-    display: none;
+    @apply grid place-items-center w-[220px] h-[190px] text-[#ab85e5] rounded-[50%];
+    background: radial-gradient(ellipse, #7540b033, transparent 70%);
   }
-  .role-app .stat strong.stat-text {
-    font-size: 16px;
-    overflow-wrap: anywhere;
-  }
-  .workout-card {
-    padding: 20px;
-  }
-  .workout-card h2 {
-    font-size: 19px;
+  .section-title {
+    @apply flex items-center justify-between gap-[12px] mt-[30px] mx-0 mb-[18px];
   }
   .section-title h2 {
-    font-size: 16px;
+    @apply text-[18px] tracking-[-0.5px];
   }
   .section-title p {
-    line-height: 1.6;
+    @apply text-[11px] text-muted mt-[7px];
   }
-  .workout-filters .search {
-    max-width: none;
+  .workout-grid {
+    @apply grid grid-cols-2 gap-[20px];
+  }
+  .workout-card {
+    @apply p-[25px] rounded-[12px] border border-line [background:var(--color-surface)] min-w-0;
+  }
+  .workout-top {
+    @apply flex items-center justify-between mb-[23px];
+  }
+  .workout-symbol {
+    @apply inline-flex items-center justify-center w-[45px] h-[45px] border border-[#4c3269] rounded-[12px] [background:#291c3d] text-[#c4a3ff] shrink-0;
+  }
+  .workout-card > .eyebrow {
+    @apply text-[9px] tracking-[1.2px] text-[#c6b4de];
+  }
+  .workout-card h2 {
+    @apply text-[20px] tracking-[-0.6px] leading-[1.5] mt-[9px] mx-0 mb-[12px] [overflow-wrap:anywhere];
+  }
+  .workout-excerpt {
+    @apply text-[12px] text-muted leading-[1.9] whitespace-pre-line line-clamp-3 min-h-[68px];
+  }
+  .workout-meta {
+    @apply flex items-center gap-[7px] text-[#a599b5] text-[10px] flex-wrap my-[22px] mx-0 pt-[16px] [border-top:1px_solid_#302638];
+  }
+  .workout-actions {
+    @apply flex items-center gap-[12px] flex-wrap;
+  }
+  .workout-actions button {
+    @apply text-[11px] py-[10px] px-0;
+  }
+  .workout-actions .primary {
+    @apply py-[11px] px-[14px] mr-auto;
+  }
+  .workout-actions button:not(.primary) {
+    @apply text-[#c5b3da];
+  }
+  .archived {
+    @apply border-dashed;
+  }
+  .workout-filters {
+    @apply flex items-center gap-[12px] flex-wrap mb-[24px];
+  }
+  .workout-filters input {
+    @apply py-[12px] px-0;
   }
   .workout-filters select {
-    flex: 1;
-    min-width: 130px;
+    @apply text-[12px] p-[11px] max-w-full;
+  }
+  .area-empty {
+    @apply py-[50px] px-[25px] text-center border border-dashed border-[#40334e] rounded-[12px] [background:var(--color-surface)] text-[#aa90ca] flex flex-col items-center gap-[15px];
+  }
+  .area-empty h2 {
+    @apply text-[#ede4f7] text-[18px];
+  }
+  .area-empty p {
+    @apply text-[12px] text-muted leading-[1.7];
   }
   .locked-state {
-    padding: 32px 20px;
+    @apply flex flex-col items-center text-center py-[45px] px-[25px] border border-[#5d3b80] rounded-[12px] gap-[17px];
+    background: linear-gradient(145deg, #21152f, #141119);
+  }
+  .lock-symbol {
+    @apply grid place-items-center w-[65px] h-[65px] rounded-[50%] text-[#c7a6ff] [background:#37214f] mb-[4px];
   }
   .locked-state h2 {
-    font-size: 22px;
+    @apply text-[25px] tracking-[-0.7px];
+  }
+  .locked-state p {
+    @apply text-[13px] text-[#dfd0ee] leading-[1.7];
+  }
+  .locked-state .lock-hint {
+    @apply text-[11px] text-muted;
+  }
+  .locked-state .primary {
+    @apply mt-[6px] text-[12px];
   }
   .finance-grid {
-    gap: 16px;
+    @apply grid grid-cols-[1fr_1fr] gap-[22px] mb-[25px];
   }
   .membership-card,
   .financial-status {
-    padding: 23px;
+    @apply [background:var(--color-surface)] border border-line rounded-[12px] p-[28px] flex flex-col items-start gap-[17px];
+  }
+  .membership-card h2,
+  .financial-status h2 {
+    @apply text-[26px] tracking-[-0.8px];
+  }
+  .membership-card p,
+  .financial-status p {
+    @apply text-[12px] leading-[1.9] text-[#c2b3d1];
+  }
+  .financial-status small {
+    @apply text-muted leading-[1.8];
+  }
+  .membership-foot {
+    @apply mt-auto pt-[22px] [border-top:1px_solid_var(--color-line)] w-full text-[10px] text-muted leading-[1.8] flex gap-[7px] items-center;
+  }
+  .financial-status.pending {
+    @apply border-[#644180];
+    background: linear-gradient(135deg, #291a3c, #141119);
+  }
+  .payment-panel > .panel-heading > svg {
+    @apply text-[#b091d7];
   }
   .portal-dialog {
-    padding: 23px;
+    @apply text-text border border-[#4b355f] [background:var(--color-surface)] p-[30px] w-[620px] max-w-[calc(100vw-32px)] max-h-[88dvh] m-auto;
+  }
+  .portal-dialog::backdrop {
+    @apply [background:#09060fe0] backdrop-blur-[5px];
+  }
+  .portal-dialog textarea {
+    font: inherit;
+    @apply resize-y text-[13px] leading-[1.8] p-[13px] border border-[#433251] [background:#100d16] text-text rounded-[8px] min-h-[150px];
+  }
+  .portal-dialog textarea:focus {
+    @apply outline-2 outline-solid outline-accent-soft outline-offset-[1px];
+  }
+  .portal-dialog .modal-heading {
+    @apply items-start gap-[15px];
   }
   .portal-dialog h2 {
-    font-size: 21px;
+    @apply [overflow-wrap:anywhere] text-[24px] leading-[1.4];
   }
   .workout-description {
-    padding: 16px;
-    font-size: 13px;
+    @apply whitespace-pre-wrap [overflow-wrap:anywhere] text-[14px] leading-[1.9] p-[22px] [background:#1d1627] border border-[#392949] rounded-[9px] my-[22px] mx-0;
   }
-  .profile-choices button {
-    font-size: 10px;
+  .detail-byline {
+    @apply text-[11px] text-muted leading-[1.9];
   }
-  .role-app .stats .stat {
-    padding: 14px 9px;
+  .detail-byline svg {
+    @apply align-middle mr-[6px];
   }
-  .workout-meta {
-    line-height: 1.8;
+  .confirm-copy {
+    @apply text-[13px] text-[#cebfdd] leading-[1.9] mt-0 mx-0 mb-[25px];
+  }
+  button:disabled {
+    @apply opacity-[0.45] cursor-not-allowed;
+  }
+  .role-app .user strong {
+    @apply max-w-[135px] overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+  @media (max-width: 1000px) {
+    .workout-grid,
+    .finance-grid {
+      @apply grid-cols-[1fr];
+    }
+    .portal-hero-icon {
+      @apply w-[120px];
+    }
+    .role-app .stat strong.stat-text {
+      @apply text-[20px];
+    }
+  }
+  @media (max-width: 760px) {
+    .portal-hero-icon {
+      @apply hidden;
+    }
+    .role-app .stat strong.stat-text {
+      @apply text-[16px] [overflow-wrap:anywhere];
+    }
+    .workout-card {
+      @apply p-[20px];
+    }
+    .workout-card h2 {
+      @apply text-[19px];
+    }
+    .section-title h2 {
+      @apply text-[16px];
+    }
+    .section-title p {
+      @apply leading-[1.6];
+    }
+    .workout-filters .search {
+      @apply max-w-none;
+    }
+    .workout-filters select {
+      @apply flex-1 min-w-[130px];
+    }
+    .locked-state {
+      @apply py-[32px] px-[20px];
+    }
+    .locked-state h2 {
+      @apply text-[22px];
+    }
+    .finance-grid {
+      @apply gap-[16px];
+    }
+    .membership-card,
+    .financial-status {
+      @apply p-[23px];
+    }
+    .portal-dialog {
+      @apply p-[23px];
+    }
+    .portal-dialog h2 {
+      @apply text-[21px];
+    }
+    .workout-description {
+      @apply p-[16px] text-[13px];
+    }
+    .profile-choices button {
+      @apply text-[10px];
+    }
+    .role-app .stats .stat {
+      @apply py-[14px] px-[9px];
+    }
+    .workout-meta {
+      @apply leading-[1.8];
+    }
   }
 }

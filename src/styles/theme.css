@@ -1,0 +1,16 @@
+/* Shared SteakUp design tokens; component sheets reference this file. */
+@reference "tailwindcss";
+
+@theme {
+  --font-sans: "DM Sans", sans-serif;
+  --font-display: "Manrope", sans-serif;
+  --color-canvas: #0d0b12;
+  --color-surface: #141119;
+  --color-elevated: #1b1623;
+  --color-line: #332a40;
+  --color-accent: #7c3aed;
+  --color-accent-hover: #6d28d9;
+  --color-accent-soft: #a78bfa;
+  --color-text: #f3edf9;
+  --color-muted: #b6a9c6;
+}
