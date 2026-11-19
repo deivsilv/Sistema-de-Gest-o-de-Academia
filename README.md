@@ -49,4 +49,4 @@ A mesma base de interface atende à versão web, ao PWA e ao aplicativo Android 
 
 ## Evolução do projeto
 
-O SteakUp está em desenvolvimento contínuo, com melhorias de usabilidade, responsividade e organização do código. O projeto inclui verificações de tipos e testes para regras financeiras, recursos de Pix, operações administrativas e comportamento do PWA.
+O SteakUp está em desenvolvimento contínuo, com melhorias de usabilidade, responsividade e organização do código. O projeto inclui verificações de tipos e testes para regras financeiras, recursos de transações, operações administrativas e comportamento do PWA.
